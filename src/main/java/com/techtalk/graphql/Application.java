@@ -1,4 +1,4 @@
-package com.techshard.graphql;
+package com.techtalk.graphql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
