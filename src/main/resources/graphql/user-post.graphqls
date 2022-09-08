@@ -4,12 +4,21 @@ type User {
     lastName: String!,
     dob: String,
     email: String,
-    phone: String
+    phone: String,
+    allPostsByUser: [Post]
+}
+
+type Post {
+    id : ID!,
+    mediaType : String!,
+    content : String,
+    publishedTime : String
 }
 
 type Query {
-    users(limit: Int):[User],
-    user(id: ID):User
+    users(limit: Int = 10): [User],
+    user(id: ID):User,
+    allPosts(limit: Int = 10): [Post]
 }
 
 input UserMutationInput {
@@ -19,6 +28,10 @@ input UserMutationInput {
 }
 
 type Mutation {
+    #User Mutation
     createUser(firstName: String!, lastName: String!, dob: String, email: String, phone: String = "NA"):User
-    updateUser(userMutationInput: UserMutationInput):User
+    updateUser(userMutationInput: UserMutationInput):User,
+
+    #Post Mutation
+    createPost(mediaType: String, content: String, userID: Int): Post
 }

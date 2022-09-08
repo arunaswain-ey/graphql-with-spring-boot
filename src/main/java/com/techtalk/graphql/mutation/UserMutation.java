@@ -16,7 +16,7 @@ public class UserMutation implements GraphQLMutationResolver {
 
     public User createUser(final String firstName, final String lastName, final String dob, final String email
             , final String phone) {
-        return this.userService.createUser(firstName, lastName, dob, email, phone);
+        return userService.createUser(firstName, lastName, dob, email, phone);
     }
 
     public User updateUser(final UserMutationInput userMutationInput) {

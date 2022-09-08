@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode
@@ -22,13 +22,12 @@ public class Post implements Serializable {
     @Column(name = "media_type", nullable = false)
     private String mediaType;
 
-    @Column(nullable = false)
     private String content;
 
     @Column(name = "published_time", nullable = false)
-    private LocalDate publishedTime;
+    private LocalDateTime publishedTime;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
