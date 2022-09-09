@@ -45,7 +45,6 @@ public class UserService {
         User existingUser = userRepository.findById(userMutationInput.getID()).orElseThrow(()
                 -> new RuntimeException("Can not find User with ID :" + userMutationInput.getID()));
         existingUser.setEmail(userMutationInput.getEmail());
-        existingUser.setPhone(userMutationInput.getPhone());
         userRepository.save(existingUser);
         return existingUser;
     }

@@ -4,9 +4,9 @@ A sample application with GraphQL and Spring Boot
 # Query
 query{
     user(id:1){
-    firstName,
+    firstName
     allPostsByUser{
-            id,
+            id
             mediaType
         }
     }
@@ -21,7 +21,7 @@ mutation{
 
 mutation{
     createPost(mediaType:"video", content:"text.mp4", userID:1){
-        id,
+        id
         mediaType
     }
 }
@@ -29,12 +29,12 @@ mutation{
 # Mutation with input type
 mutation{
     updateUser(userMutationInput : {
-        id : 1,
-        email :"new_email@ey.com",
+        id : 1
+        email :"new_email@ey.com"
         phone : "+48 901897321"
     }) {
-        firstName,
-        email,
+        firstName
+        email
         phone
     }
 }
@@ -42,8 +42,8 @@ mutation{
 # Mutation with Query Variable
 mutation($userMutationInput : UserMutationInput){
     updateUser(userMutationInput: $userMutationInput) {
-        firstName,
-        email,
+        firstName
+        email
         phone
     }
 }
@@ -56,6 +56,28 @@ mutation($userMutationInput : UserMutationInput){
     }
 }
 
+# Fragment
+fragment userFragment on User  {
+    firstName
+    lastName
+    dob
+    Posts : allPostsByUser {
+                content
+            }
+}
+query{
+    user(id: 1){
+        ...userFragment
+    }
+}
+
+# Directive
+fragment userFragment on User {
+    firstName
+    allPostsByUser @include(if: $userPostRequired) {
+                    content
+    }
+}
 
 # Priority Order of resolver matching
 schema

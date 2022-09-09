@@ -1,36 +1,35 @@
 type User {
-    id: ID!,
-    firstName: String!,
-    lastName: String!,
-    dob: String,
-    email: String,
-    phone: String,
+    id: ID!
+    firstName: String!
+    lastName: String!
+    dob: String
+    email: String
+    phone: String
     allPostsByUser: [Post]
 }
 
 type Post {
-    id : ID!,
-    mediaType : String!,
-    content : String,
+    id : ID!
+    mediaType : String!
+    content : String
     publishedTime : String
 }
 
 type Query {
-    users(limit: Int = 10): [User],
-    user(id: ID):User,
+    users(limit: Int = 10): [User]
+    user(id: ID):User
     allPosts(limit: Int = 10): [Post]
 }
 
 input UserMutationInput {
-    id: ID!,
-    email: String!,
-    phone: String
+    id: ID!
+    email: String!
 }
 
 type Mutation {
     #User Mutation
     createUser(firstName: String!, lastName: String!, dob: String, email: String, phone: String = "NA"):User
-    updateUser(userMutationInput: UserMutationInput):User,
+    updateUser(userMutationInput: UserMutationInput):User
 
     #Post Mutation
     createPost(mediaType: String, content: String, userID: Int): Post

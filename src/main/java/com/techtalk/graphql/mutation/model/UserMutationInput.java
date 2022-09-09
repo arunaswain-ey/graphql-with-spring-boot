@@ -12,5 +12,4 @@ public class UserMutationInput implements GraphQLInputType {
 
     private int ID;
     private String email;
-    private String phone;
 }
