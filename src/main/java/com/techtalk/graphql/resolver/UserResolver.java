@@ -59,7 +59,7 @@ public class UserResolver implements GraphQLQueryResolver, GraphQLMutationResolv
     }
 
     @Transactional(readOnly = true)
-    public List<Object> getAllUserPost() {
+    public List<Object> getAllData() {
         List list = userRepository.findAll();
         list.addAll(postRepository.findAll());
         return list;

@@ -32,7 +32,7 @@ public class PostResolver implements GraphQLQueryResolver, GraphQLMutationResolv
     private final ConcurrentHashMap<Integer, FluxSink<Post>> subscribers = new ConcurrentHashMap<>();
 
     @Transactional(readOnly = true)
-    public List<Post> allPosts(final int limit) {
+    public List<Post> getAllPosts(final int limit) {
         return postRepository.findAll().stream().limit(limit).collect(Collectors.toList());
     }
 

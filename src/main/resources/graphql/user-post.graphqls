@@ -13,17 +13,17 @@ type User implements MetaData {
 type Post {
     id: ID!
     mediaType: String!
-    content: Int
+    content: String
     publishedTime: String
     likes: Int
 }
 
 type Query {
-    users(limit: Int = 100): [User]
+    users(limit: Int): [User]
     user(id: ID):User
     allPosts(limit: Int = 100): [Post]
 
-    allUserPost: [All]
+    allData: [All]
 }
 
 type Mutation {
