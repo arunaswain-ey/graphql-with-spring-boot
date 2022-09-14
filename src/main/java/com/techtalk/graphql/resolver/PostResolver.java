@@ -29,7 +29,7 @@ public class PostResolver implements GraphQLQueryResolver, GraphQLMutationResolv
     @Autowired
     private UserRepository userRepository;
 
-    private final ConcurrentHashMap<Integer, FluxSink<Post>> subscribers = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Long, FluxSink<Post>> subscribers = new ConcurrentHashMap<>();
 
     @Transactional(readOnly = true)
     public List<Post> getAllPosts(final int limit) {
@@ -64,7 +64,7 @@ public class PostResolver implements GraphQLQueryResolver, GraphQLMutationResolv
         return "Post like updated to "+likes;
     }
 
-    public Publisher<Post> onPostUpdate(int postID) {
+    public Publisher<Post> onPostUpdate(final long postID) {
         return Flux.create(subscriber
                         -> subscribers.put(postID, subscriber.onDispose(() -> subscribers.remove(postID, subscriber)))
                 , FluxSink.OverflowStrategy.LATEST);
