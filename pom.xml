@@ -29,26 +29,37 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!--Enabling GraphQL servlet, initializes the GraphQLSchema-->
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>5.0.2</version>
         </dependency>
+        <!--Allows to write schema with GraphQL schema language, -->
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>5.2.4</version>
         </dependency>
+        <!--Provides a user interface with which we could test our GraphQL queries-->
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphiql-spring-boot-starter</artifactId>
             <version>5.0.2</version>
         </dependency>
+        <!--Spring React-->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>3.4.22</version>
+        </dependency>
+        <!--H2 database-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--Lombok dependency-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

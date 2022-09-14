@@ -17,7 +17,7 @@ public class Post implements Serializable {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "media_type", nullable = false)
     private String mediaType;
@@ -26,6 +26,8 @@ public class Post implements Serializable {
 
     @Column(name = "published_time", nullable = false)
     private LocalDateTime publishedTime;
+
+    private long likes;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

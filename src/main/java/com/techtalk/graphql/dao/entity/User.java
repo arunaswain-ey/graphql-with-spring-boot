@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -13,12 +14,12 @@ import java.util.Set;
 @Entity
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -34,4 +35,8 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts;
+
+    private LocalDateTime createdDate;
+
+    private String createdUser;
 }

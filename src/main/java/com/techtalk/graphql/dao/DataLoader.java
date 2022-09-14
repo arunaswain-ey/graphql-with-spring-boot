@@ -27,6 +27,8 @@ public class DataLoader {
         user.setDob(LocalDate.parse("1987-09-01"));
         user.setEmail("Aruna.Swain@gmail.com");
         user.setPhone("+48 879678761");
+        user.setCreatedUser("demon");
+        user.setCreatedDate(LocalDateTime.now());
         userRepository.save(user);
 
         Post post1 = new Post();

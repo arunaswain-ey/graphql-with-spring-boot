@@ -1,4 +1,4 @@
-type User {
+type User implements MetaData {
     id: ID!
     firstName: String!
     lastName: String!
@@ -6,24 +6,24 @@ type User {
     email: String
     phone: String
     allPostsByUser: [Post]
+    createdDate: String
+    createdUser: String
 }
 
 type Post {
-    id : ID!
-    mediaType : String!
-    content : String
-    publishedTime : String
+    id: ID!
+    mediaType: String!
+    content: Int
+    publishedTime: String
+    likes: Int
 }
 
 type Query {
-    users(limit: Int = 10): [User]
+    users(limit: Int = 100): [User]
     user(id: ID):User
-    allPosts(limit: Int = 10): [Post]
-}
+    allPosts(limit: Int = 100): [Post]
 
-input UserMutationInput {
-    id: ID!
-    email: String!
+    allUserPost: [All]
 }
 
 type Mutation {
@@ -33,4 +33,21 @@ type Mutation {
 
     #Post Mutation
     createPost(mediaType: String, content: String, userID: Int): Post
+    addLikesToPost(postID: Int!): String
 }
+
+type Subscription {
+    onPostUpdate(posID: ID!): Post
+}
+
+input UserMutationInput {
+    id: ID!
+    email: String!
+}
+
+interface MetaData {
+    createdDate: String
+    createdUser: String
+}
+
+union All = User | Post

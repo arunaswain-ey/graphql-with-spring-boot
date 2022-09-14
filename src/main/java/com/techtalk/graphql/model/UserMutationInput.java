@@ -1,4 +1,4 @@
-package com.techtalk.graphql.mutation.model;
+package com.techtalk.graphql.model;
 
 import graphql.schema.GraphQLInputType;
 import lombok.Data;
@@ -10,6 +10,6 @@ public class UserMutationInput implements GraphQLInputType {
         return "userMutationInput";
     }
 
-    private int ID;
+    private long ID;
     private String email;
 }
