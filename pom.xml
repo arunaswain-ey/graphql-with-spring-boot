@@ -29,13 +29,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--Enabling GraphQL servlet, initializes the GraphQLSchema-->
+        <!--Creates GraphQL servlet, initializes the GraphQLSchema-->
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>5.0.2</version>
         </dependency>
-        <!--Allows to write schema with GraphQL schema language, -->
+        <!--Allows to write schema with GraphQL schema language, Registers resolvers-->
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
